@@ -397,8 +397,8 @@ Eigen::Vector3d spherical_harmonics::mag_UVW(double r, double theta){
     double mag_U, mag_V, mag_W;
     Eigen::Vector3d mag_UVW_res;
     double beta_1, beta_2;
-    beta_1 = (M_i.dot(y_cap)/(4*M_PI*a*a*a*H0.norm()));
-    beta_2 = (M_j.dot(y_cap)/(4*M_PI*a*a*a*H0.norm()));
+    beta_1 = -(M_i.dot(y_cap)/(4*M_PI*a*a*a*H0.norm()));
+    beta_2 = -(M_j.dot(y_cap)/(4*M_PI*a*a*a*H0.norm()));
 
     mag_U= 2*beta_1*lpmn_cos(1,1, theta)/(r/a*r/a*r/a) - beta_2*lpmn_cos(1,1, theta)/(sep/a*sep/a*sep/a);
     mag_V= - beta_1*d_lpmn_cos(1,1, theta)/(r/a*r/a*r/a) - beta_2*d_lpmn_cos(1,1, theta)/(sep/a*sep/a*sep/a);
