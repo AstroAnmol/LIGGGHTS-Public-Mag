@@ -397,14 +397,14 @@ Eigen::Vector3d spherical_harmonics::mag_UVW(double r, double theta){
     double mag_U, mag_V, mag_W;
     Eigen::Vector3d mag_UVW_res;
     double beta_1, beta_2;
-    beta_1 = (M_i.dot(y_cap)/(4*M_PI*a*a*a*H0.norm()));
-    beta_2 = (M_j.dot(y_cap)/(4*M_PI*a*a*a*H0.norm()));
-
     double r2 = std::sqrt(r*r + sep*sep - 2*sep*r*std::cos(theta));
+    
+    beta_1 = (M_i.dot(y_cap)/(4*M_PI*a*a*a*H0.norm()*(r/a*r/a*r/a) ));
+    beta_2 = (M_j.dot(y_cap)/(4*M_PI*a*a*a*H0.norm()*(r2/a*r2/a*r2/a)));
 
-    mag_U= 2*beta_1*std::sin(theta)/(r/a*r/a*r/a) + 2*beta_2*std::sin(theta)*(r*r)/(r2*r2*r2/a*r2/a*r2/a) - (beta_2/(r2*r2*r2/a*r2/a*r2/a))*3*sep*r/r2/r2*std::sin(theta)*std::cos(theta);
-    mag_V= - beta_1*std::cos(theta)/(r/a*r/a*r/a) - beta_2*std::cos(theta)*(r*r)/(r2*r2*r2/a*r2/a*r2/a) + (beta_2/(r2*r2*r2/a*r2/a*r2/a))*3*sep*r/r2/r2*std::sin(theta)*std::sin(theta);
-    mag_W= - beta_1/(r/a*r/a*r/a) - beta_2/(r2/a*r2/a*r2/a);
+    mag_U= 2*beta_1*std::sin(theta) + 2*beta_2*std::sin(theta)*(r*r)/(r2*r2) - beta_2*3*sep*r/r2/r2*std::sin(theta)*std::cos(theta);
+    mag_V= - beta_1*std::cos(theta) - beta_2*std::cos(theta)*(r*r)/(r2*r2) + beta_2*3*sep*r/r2/r2*std::sin(theta)*std::sin(theta);
+    mag_W= - beta_1 - beta_2;
     
     mag_UVW_res << mag_U, mag_V, mag_W;
     return mag_UVW_res;
