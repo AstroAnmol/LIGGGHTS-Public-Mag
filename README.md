@@ -1,3 +1,10 @@
+## Magnetic Force Model for LIGGGHTS
+This is a modified fork of the LIGGGHTS public repository with a magnetic force model based on the Inclusion model provided by Keaveny & Maxey (2008). The model is validated against the experimental results of Sunday et al (2024), making it the first experimentally validated magnetic force model for simulating magnetic granular material.
+
+- 1. Keaveny, E. E. & Maxey, M. R. Modeling the magnetic interactions between paramagnetic beads in magnetorheological fluids. Journal of Computational Physics 227, 9554–9571 (2008).
+  2. Sunday C. et al. Avalanching Behavior of Magnetic Granular Mixtures. Phys. Rev. E 110, 044901, Oct 2024.
+
+
 <div align ="center">
 <p float="left">
   <img src="doc/liggghts_logo.jpg" width="300" />
